@@ -11,13 +11,10 @@ import {
     MatIconModule,
     MatSnackBarModule,
     MatTooltipModule,
+    MatToolbarModule,
     MatTableModule,
     MatProgressSpinnerModule,
     MatStepperModule
-
-
-
-
 
 } from '@angular/material'
 
@@ -33,6 +30,7 @@ import {
         MatIconModule,
         MatSnackBarModule,
         MatTooltipModule,
+        MatToolbarModule,
         MatTableModule,
         MatProgressSpinnerModule,
         MatStepperModule
@@ -47,6 +45,7 @@ import {
         MatListModule,
         MatIconModule,
         MatSnackBarModule,
+        MatToolbarModule,
         MatTooltipModule,
         MatTableModule,
         MatProgressSpinnerModule,

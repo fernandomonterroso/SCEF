@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-ubicacion-garantia',
   templateUrl: './ubicacion-garantia.component.html',
@@ -13,3 +14,5 @@ export class UbicacionGarantiaComponent implements OnInit {
   }
 
 }
+
+
