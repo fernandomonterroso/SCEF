@@ -12,12 +12,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { UbicacionGarantiaComponent } from './components/ubicacion-garantia/ubicacion-garantia.component';
 import { CategoriasSIBComponent } from './components/categorias-sib/categorias-sib.component';
+import { AcercamientosComponent } from './components/acercamientos/acercamientos.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     UbicacionGarantiaComponent,
-    CategoriasSIBComponent
+    CategoriasSIBComponent,
+    AcercamientosComponent
   ],
   imports: [
     BrowserModule,
