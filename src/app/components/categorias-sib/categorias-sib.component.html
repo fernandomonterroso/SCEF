@@ -10,6 +10,8 @@
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Descripcion categoria">
   </mat-form-field>
+  <br>
+  <br>
 </form>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -60,17 +62,6 @@
       (click)="selection.toggle(row)">
   </tr>
 </table>
-
-<ol>
-  <li>
-    <mat-form-field>
-      <input matInput placeholder="What's your name?">
-    </mat-form-field>
-  </li>
-  <li>
-    <button mat-raised-button (click)="openDialog()">Pick one</button>
-  </li>
-  <li *ngIf="animal">
-    You chose: <i>{{animal}}</i>
-  </li>
-</ol>
+  <br>
+  <br>
+<button mat-raised-button (click)="openDialog()">Pick one</button>

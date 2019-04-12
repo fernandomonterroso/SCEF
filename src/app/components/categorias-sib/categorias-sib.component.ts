@@ -10,11 +10,6 @@ export interface PeriodicElement {
   symbol: string;
 }
 
-export interface DialogData {
-  animal: string;
-  names: string;
-}
-
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
@@ -26,6 +21,10 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
   {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {position: 11, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {position: 12, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {position: 13, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {position: 14, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
 ];
 
 @Component({
@@ -43,7 +42,7 @@ export class CategoriasSIBComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
+      width: '300px',      
       data: {names: this.names, animal: this.animal}
     });
 
@@ -65,7 +64,7 @@ export class CategoriasSIBComponent implements OnInit {
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
+    return numSelected === numRows; 
   }
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
@@ -84,10 +83,17 @@ export class CategoriasSIBComponent implements OnInit {
   }
 
 }
+//----------------------------------------- COMPONENTE DEL DIALOG --------------------------------------- 
+
+export interface DialogData {
+  animal: string;
+  names: string;
+}
 
 @Component({
   selector: 'dialog-overview-example-dialog',
   templateUrl: 'agregar-categoria-sib.component.html',
+  styleUrls: ['./categorias-sib.component.css']
 })
 export class DialogOverviewExampleDialog {
 
