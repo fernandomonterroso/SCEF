@@ -4,12 +4,16 @@ import { UbicacionGarantiaComponent } from './components/ubicacion-garantia/ubic
 import { HomeComponent } from './components/home/home.component';
 import { CategoriasSIBComponent } from './components/categorias-sib/categorias-sib.component';
 import { AcercamientosComponent } from './components/acercamientos/acercamientos.component';
+import { AsesoresPrestamoComponent } from './components/asesores-prestamo/asesores-prestamo.component';
+import { TiposDeduccionesComponent } from './components/tipos-deducciones/tipos-deducciones.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'ubicacionGarantia', component: UbicacionGarantiaComponent},
   {path: 'categoriasSIB', component: CategoriasSIBComponent},
   {path: 'acercamientos', component: AcercamientosComponent},
+  {path: 'asesoresPrestamo', component: AsesoresPrestamoComponent},
+  {path: 'tiposDeducciones', component: TiposDeduccionesComponent},
   {path: '**', component: HomeComponent}
 ];
 

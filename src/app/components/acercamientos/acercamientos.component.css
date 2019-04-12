@@ -29,4 +29,14 @@
   table {
     width: 100%;
   }
-  
+
+  .mat-elevation-z8{
+    width: 80%;
+    margin:0 auto;
+  }
+
+.buttons{
+  margin: 0 auto; 
+  width: 245px;
+  padding: 25px 0;
+}

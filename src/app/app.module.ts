@@ -13,13 +13,17 @@ import { HomeComponent } from './components/home/home.component';
 import { UbicacionGarantiaComponent } from './components/ubicacion-garantia/ubicacion-garantia.component';
 import { CategoriasSIBComponent } from './components/categorias-sib/categorias-sib.component';
 import { AcercamientosComponent } from './components/acercamientos/acercamientos.component';
+import { AsesoresPrestamoComponent } from './components/asesores-prestamo/asesores-prestamo.component';
+import { TiposDeduccionesComponent } from './components/tipos-deducciones/tipos-deducciones.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     UbicacionGarantiaComponent,
     CategoriasSIBComponent,
-    AcercamientosComponent
+    AcercamientosComponent,
+    AsesoresPrestamoComponent,
+    TiposDeduccionesComponent
   ],
   imports: [
     BrowserModule,

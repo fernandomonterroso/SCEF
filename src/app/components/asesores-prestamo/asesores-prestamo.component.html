@@ -1,3 +1,81 @@
-<p>
-  asesores-prestamo works!
-</p>
+<div class="barra-nav">
+    <mat-toolbar color="primary" class="example-toolbar">
+      <span>My Application</span>
+      <span style="flex: 1 1 auto"></span>
+      <span>Asesores</span>
+    </mat-toolbar>
+  </div>
+  
+  <div style="padding: 20px; margin-top: 5%"></div>
+  
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                        [aria-label]="checkboxLabel()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)"
+                        [aria-label]="checkboxLabel(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+  
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+  
+  <!-- Weight Column -->
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef> Weight </th>
+    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+  </ng-container>
+  
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  </ng-container>
+  
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+      (click)="selection.toggle(row)">
+  </tr>
+  </table>
+  <br>
+  <br>
+  <div class="buttons">
+      <button mat-icon-button color="primary" (click)="openCreate()">
+          <mat-icon>home</mat-icon>
+      </button>
+      <button mat-icon-button color="primary">
+          <mat-icon>keyboard_return</mat-icon>
+      </button>
+      <button mat-icon-button color="primary">
+          <mat-icon>note_add</mat-icon>
+      </button>
+      <button mat-icon-button color="primary">
+          <mat-icon>delete_sweep</mat-icon>
+      </button>
+      <button mat-icon-button color="primary">
+          <mat-icon>create</mat-icon>
+      </button>
+      <button mat-icon-button color="primary">
+          <mat-icon>search</mat-icon>
+      </button>
+  </div>
+  
+  <button mat-raised-button (click)="openDialog()">Pick one</button>
