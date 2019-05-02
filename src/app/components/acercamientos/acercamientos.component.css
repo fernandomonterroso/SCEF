@@ -40,3 +40,26 @@
   width: 245px;
   padding: 25px 0;
 }
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+.sidenav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.no {
+display:none;
+}
+.si {
+display:block;
+}
+
+.encabezado{
+  background: #273746
+}

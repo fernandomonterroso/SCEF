@@ -1,0 +1,35 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <mat-icon>vpn_lock</mat-icon>
+      <span>Byte</span>   
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <br>
+  <mat-card class="centro"><mat-card-title>Altas</mat-card-title></mat-card>
+<br>
+<br>
+
+<table class="centro">
+    <br>
+  
+        <p>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Introduce el Codigo">
+          </mat-form-field>
+        <br>
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Descripcion"></textarea>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="example-full-width">
+                <textarea matInput placeholder="Tipo de Activo Credificio"></textarea>
+              </mat-form-field>
+          </p>
+ 
+</table > 
+<br>
+
+  <button mat-stroked-button [mat-dialog-close]="" color="accent"><mat-icon>keyboard_backspace</mat-icon></button>
+  <button mat-stroked-button [mat-dialog-close]="data.animal" cdkFocusInitial color="primary"><mat-icon>meeting_room</mat-icon></button>
+  <button mat-stroked-button color="accent"><mat-icon>reply</mat-icon></button>
+  <button mat-stroked-button cdkFocusInitial color="primary"><mat-icon>done_outline</mat-icon></button>

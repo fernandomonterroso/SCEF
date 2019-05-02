@@ -8,6 +8,10 @@
     right: 0;
   }
 
+  .encabezado{
+    background: #273746
+  }
+
   .example-container {
     position: absolute;
     top: 0;
@@ -39,4 +43,13 @@
   margin: 0 auto; 
   width: 245px;
   padding: 25px 0;
-}
+} 
+
+
+.no {
+  display:none;
+  }
+  .si {
+  display:block;
+  }
+  

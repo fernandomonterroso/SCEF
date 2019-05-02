@@ -16,7 +16,17 @@ import {
     MatProgressSpinnerModule,
     MatStepperModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatSidenavModule,
+    MatDialogModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatRadioModule,    
+    MatRippleModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatPaginatorModule,
+    MatNativeDateModule, 
+    
 
 } from '@angular/material'
 
@@ -37,7 +47,17 @@ import {
         MatProgressSpinnerModule,
         MatStepperModule,
         MatCheckboxModule,
-        MatDialogModule
+        MatSidenavModule,
+        MatDialogModule,
+        MatChipsModule,
+        MatDatepickerModule,
+        MatRadioModule,
+        MatRippleModule,
+        MatMenuModule,
+        MatSelectModule,
+        MatPaginatorModule,
+        MatNativeDateModule, 
+       
     ],
     exports:[
         MatButtonModule,
@@ -55,7 +75,17 @@ import {
         MatProgressSpinnerModule,
         MatStepperModule,
         MatCheckboxModule,
-        MatDialogModule
+        MatSidenavModule,
+        MatDialogModule,
+        MatChipsModule,
+        MatDatepickerModule,
+        MatRadioModule,
+        MatRippleModule,
+        MatMenuModule,
+        MatSelectModule,
+        MatPaginatorModule,
+        MatNativeDateModule, 
+        
     ]
 })
 

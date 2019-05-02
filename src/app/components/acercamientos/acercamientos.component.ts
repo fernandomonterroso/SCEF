@@ -1,26 +1,25 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
-import {MatTableDataSource} from '@angular/material';
+import {MatTableDataSource, MatPaginator} from '@angular/material';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {FormControl} from '@angular/forms';
 
 export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  description: string;
+  number: number;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {number: 1, description: 'Hydrogen'},
+  {number: 2, description: 'Helium'},
+  {number: 3, description: 'Lithium'},
+  {number: 4, description: 'Beryllium'},
+  {number: 5, description: 'Boron'},
+  {number: 6, description: 'Carbon'},
+  {number: 7, description: 'Nitrogen'},
+  {number: 8, description: 'Oxygen'},
+  {number: 9, description: 'Fluorine'},
+  {number: 10, description: 'Neon'},
 ];
 
 @Component({
@@ -30,13 +29,16 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class AcercamientosComponent implements OnInit {
 
+
+  mode = new FormControl('over');
+  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
   animal: string;
   names: string;
 
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    const dialogRef = this.dialog.open(CrearAcercamiento, {
       width: '300px',      
       data: {names: this.names, animal: this.animal}
     });
@@ -47,11 +49,7 @@ export class AcercamientosComponent implements OnInit {
     });
   }
 
-
-  ngOnInit() {
-  }
-
-  displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['select', 'number', 'description'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
 
@@ -74,12 +72,32 @@ export class AcercamientosComponent implements OnInit {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.number + 1}`;
   }
 
-} 
-//----------------------------------------- COMPONENTE DEL DIALOG --------------------------------------- 
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngOnInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
+
+  muestra(id){
+    if(id.className=='no'){
+    document.getElementById(id).className='si';
+    }else{
+      document.getElementById(id).className='no';
+    }
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+
+}
+//----------------------------------------- COMPONENTE DEL DIALOG --------------------------------------- 
 export interface DialogData {
   animal: string;
   names: string;
@@ -90,10 +108,10 @@ export interface DialogData {
   templateUrl: 'agregar-acercamientos.component.html',
   styleUrls: ['./acercamientos.component.css']
 })
-export class DialogOverviewExampleDialog {
+export class CrearAcercamiento {
 
   constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    public dialogRef: MatDialogRef<CrearAcercamiento>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {
@@ -101,3 +119,4 @@ export class DialogOverviewExampleDialog {
   }
 
 }
+

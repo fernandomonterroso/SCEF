@@ -1,0 +1,14 @@
+<mat-toolbar color="primary" class="encabezado">Agregar Estaus Avaluos</mat-toolbar>
+<div mat-dialog-content>
+    <mat-form-field>
+        <input matInput placeholder="Codigo categoria">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Descripcion categoria">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button color="primary" (click)="onNoClick()">Cancelar</button>
+    <button mat-button color="primary" [mat-dialog-close]="data.estatus" cdkFocusInitial>Agregar</button>
+  </div>

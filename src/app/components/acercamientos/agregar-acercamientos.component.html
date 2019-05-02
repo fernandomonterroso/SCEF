@@ -9,13 +9,14 @@
           </mat-form-field>
           <br>
           <br>
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Confirmar Cupo">
-            <h2>(S/N)</h2>
-          </mat-form-field>
+          <h2>Confirmar cupo</h2>
+          <mat-radio-group aria-label="Confirmar Cupo">
+            <mat-radio-button value="1">Si</mat-radio-button>
+            <mat-radio-button value="2">No</mat-radio-button>
+          </mat-radio-group>
           <br>
           <br>
-      <button mat-button (click)="onNoClick()">No Thanks</button>
+      <button mat-button (click)="onNoClick()">Cancel</button>
       <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
     </form>
     

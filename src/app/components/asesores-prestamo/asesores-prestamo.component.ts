@@ -4,23 +4,21 @@ import {MatTableDataSource} from '@angular/material';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  description: string;
+  number: number;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {number: 1, description: 'Hydrogen'},
+  {number: 2, description: 'Helium'},
+  {number: 3, description: 'Lithium'},
+  {number: 4, description: 'Beryllium'},
+  {number: 5, description: 'Boron'},
+  {number: 6, description: 'Carbon'},
+  {number: 7, description: 'Nitrogen'},
+  {number: 8, description: 'Oxygen'},
+  {number: 9, description: 'Fluorine'},
+  {number: 10, description: 'Neon'},
 ];
 
 @Component({
@@ -36,7 +34,7 @@ export class AsesoresPrestamoComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    const dialogRef = this.dialog.open(CrearAsesoresPrestamos, {
       width: '300px',      
       data: {names: this.names, animal: this.animal}
     });
@@ -51,7 +49,7 @@ export class AsesoresPrestamoComponent implements OnInit {
   ngOnInit() {
   }
 
-  displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['select', 'number', 'description'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
 
@@ -74,7 +72,11 @@ export class AsesoresPrestamoComponent implements OnInit {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.number + 1}`;
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 } 
@@ -90,10 +92,10 @@ export interface DialogData {
   templateUrl: 'agregar-asesores-prestamo.component.html',
   styleUrls: ['./asesores-prestamo.component.css']
 })
-export class DialogOverviewExampleDialog {
+export class CrearAsesoresPrestamos {
 
   constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    public dialogRef: MatDialogRef<CrearAsesoresPrestamos>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {

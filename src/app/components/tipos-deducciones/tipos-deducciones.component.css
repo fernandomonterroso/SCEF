@@ -40,3 +40,14 @@
   width: 245px;
   padding: 25px 0;
 }
+
+.no {
+  display:none;
+  }
+  .si {
+  display:block;
+  }
+
+  .encabezado{
+    background: #273746
+  }

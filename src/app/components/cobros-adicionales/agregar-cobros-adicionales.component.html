@@ -1,0 +1,32 @@
+<mat-toolbar class="dialog">Altas</mat-toolbar>
+<form>
+<table >
+<tr>
+<td><h4>Codigo De Cobro:  </h4></td>
+<td>
+<mat-form-field>
+    <input matInput placeholder="Input">
+    </mat-form-field>
+</td>
+</tr>
+<tr>
+<td><h4>Descripcion:  </h4></td>
+<td>
+<mat-form-field>
+<input matInput placeholder="Input">
+</mat-form-field>
+</td>
+</tr>
+<tr>
+<td><h4>Descripcion Por Reportes:</h4></td>
+<td>
+<mat-form-field>
+    <input matInput placeholder="Input">
+    </mat-form-field>
+</td>
+</tr>
+</table > 
+      <!--<button mat-button (click)="onNoClick()">Cancelar</button>-->
+         <button mat-button [mat-dialog-close]="">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Guardar</button>
+</form>

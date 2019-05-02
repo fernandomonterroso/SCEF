@@ -1,0 +1,76 @@
+<mat-toolbar class="dialog">Altas</mat-toolbar>
+
+<form>
+<table style="margin: auto;" class="letra">
+<tr>
+<td><h4>Codigo:  </h4></td>
+<td>
+<mat-form-field>
+    <input matInput placeholder="Input">
+    </mat-form-field>
+</td>
+</tr>
+<tr>
+<td><h4>Nombre:  </h4></td>
+<td>
+<mat-form-field>
+<input matInput placeholder="Input">
+</mat-form-field>
+</td>
+</tr>
+<tr>
+<td><h4>Colegiado No.:</h4></td>
+<td>
+<mat-form-field>
+    <input matInput placeholder="Input">
+    </mat-form-field>
+</td>
+</tr>
+<tr>
+<td><h4>Código:  </h4></td>
+<td>
+<mat-form-field>
+        <input matInput placeholder="Input">
+        </mat-form-field>
+</td>
+</tr>
+
+<tr>
+<td><h4>Dirección:  </h4></td>
+<td>
+<mat-form-field>
+    <input matInput placeholder="Input">
+    </mat-form-field>
+</td>
+</tr>       
+<tr>
+<td><h4>Identificación:  </h4></td>
+<td>
+<mat-form-field>
+        <input matInput placeholder="Input">
+        </mat-form-field>
+</td>
+</tr>
+<tr>
+<td><h4>Telefono:  </h4></td>
+<td>
+    <mat-form-field>
+            <input matInput placeholder="Input">
+            </mat-form-field>
+</td>
+</tr>
+<tr>
+<td><h4>Fax:  </h4></td>
+<td>
+        <mat-form-field>
+                <input matInput placeholder="Input">
+                </mat-form-field>
+</td>
+</tr>
+</table > 
+
+     
+         <!--<button mat-button (click)="onNoClick()">Cancelar</button>-->
+         <button mat-button [mat-dialog-close]="">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Guardar</button>
+</form>

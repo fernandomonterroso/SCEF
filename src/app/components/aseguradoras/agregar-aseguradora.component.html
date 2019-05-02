@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <mat-icon>vpn_lock</mat-icon>
+      <span>Byte</span>   
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <br>
+  <mat-card class="centro"><mat-card-title>Altas</mat-card-title></mat-card>
+<br>
+<br>
+<table class="centro">
+  
+        <p>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Introduce el Codigo">
+          </mat-form-field>
+        <br>
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Descripcion"></textarea>
+          </mat-form-field>
+          </p>
+ 
+</table > 
+<br>
+
+  <button mat-button [mat-dialog-close]="">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Guardar</button>
