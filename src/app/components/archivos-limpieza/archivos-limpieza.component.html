@@ -25,7 +25,7 @@ matRipple
         <p>
           <mat-form-field appearance="outline">
             <mat-label>Seleccionar</mat-label>
-            <input matInput placeholder="Ingrese el nombre">
+            <input matInput placeholder="Ingrese el nombre" (keyup)="applyFilter($event.target.value)">
             <mat-icon matSuffix>find_replace</mat-icon>
             <mat-hint>Seleccionar por nombre</mat-hint>
           </mat-form-field>
@@ -34,24 +34,9 @@ matRipple
       </td>
     </tr>
     <mat-spinner class="capa1" *ngIf="mostrar"></mat-spinner>
-  </table > 
-
-  <table class="busqueda">
-      <tr>
-        <td><h4 class="letra" >Opción:  </h4></td>
-        <td>
-          <p>
-            <mat-form-field appearance="outline">
-              <mat-label>Seleccionar</mat-label>
-              <input matInput placeholder="Ingrese el nombre">
-              <mat-icon matSuffix>find_replace</mat-icon>
-              <mat-hint>Seleccionar por ID</mat-hint>
-            </mat-form-field>
-          </p>
-        </td>
-      </tr>
+  </table >  
       
-    </table > 
+
 
   
 

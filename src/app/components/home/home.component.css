@@ -1,79 +1,15 @@
-.example-container {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0; 
-  }
-  
-  .example-is-mobile .example-toolbar {
-    position: fixed;
-    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
-    z-index: 2;
-    
-  }
-  
-  h1.example-app-name {
-    margin-left: 8px;
-  }
-  
-  .example-sidenav-container {
-    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
-       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
-    flex: 1;
-    width: 440px;     
-  }
-
-  .example-sidenav-container #contenido{
-    font-size: 11;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-left: 5px;
-  }
-  
-  .example-sidenav-container mat-nav-list{
-    width: 440px
-  }
-
-  .example-sidenav-container mat-nav-list a { 
-    display:block; 
-    width:400px; 
-    height:50px; 
-    font-size: 11;
-    background-color:#273746; 
-    border-left:5px solid #222; 
-    border-right:5px solid #222; 
-    padding-left:10px;
-    text-decoration:none; 
-    color:white; 
+.imagen{
+  height: auto;
+  width: auto;
 }
 
-.example-sidenav-container mat-nav-list a:hover { 
-    -moz-transform:rotate(-5deg); 
-    -moz-box-shadow:10px 10px 20px #000000;
-    -webkit-transform:rotate(-5deg); 
-    -webkit-box-shadow:10px 10px 20px #000000;
-    transform:rotate(4deg); box-shadow:10px 10px 20px #000000; 
-    margin-left: 10px;
+.imagen img{
+  background-repeat: no-repeat;
+  height: auto;
+  width: 100%;
 }
-  .example-is-mobile .example-sidenav-container {
-    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
-       `<body>` to be our scrolling element for mobile layouts. */
-    flex: 1 0 auto;
-  }
-  
-    .example-card{
-      text-align: center;
-      width: 500px;
-      height: 450px;
-      margin-left: 500px;
-      margin-top: 10%
-    }
-  
-  .imagenSideNav{
-    background-repeat: no-repeat;
-    background-size: auto;
-    height: auto;
-    width: auto
-  }
+
+.somos{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px
+}

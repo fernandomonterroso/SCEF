@@ -28,6 +28,11 @@ export class AseguradorasComponent implements OnInit {
   names: string;
 
   constructor(public dialog: MatDialog) { }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAseg, {
       width: '60%',

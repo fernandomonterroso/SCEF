@@ -9,35 +9,15 @@
 
 <div style="padding: 20px; margin-top: 5%"></div>
 
-<div class="buttons">
-  <button mat-icon-button color="primary" onclick="javascript:nameformdiv.className='si';">
-      <mat-icon>search</mat-icon>
-  </button>
-  
-<div id="nameformdiv" class="no" >
-  <mat-form-field class="example-full-width">
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="¿Qué quiere buscar?">
-  </mat-form-field>
-</div>
-</div>
-
-<div class="buttons">
-  <button mat-icon-button color="primary" routerLink="home">
-      <mat-icon>home</mat-icon>
-  </button>
-  <button mat-icon-button color="primary">
-      <mat-icon>keyboard_return</mat-icon>
-  </button>
-  <button mat-icon-button color="primary"  (click)="openDialog()">
-      <mat-icon>note_add</mat-icon>
-  </button>
-  <button mat-icon-button color="primary">
-      <mat-icon>delete_sweep</mat-icon>
-  </button>
-  <button mat-icon-button color="primary">
-      <mat-icon>create</mat-icon>
-  </button>
-</div>
+<div class="example-form">
+  <mat-form-field appearance="outline">
+    <mat-label>Buscar</mat-label>
+    <input matInput placeholder="Ingrese el codigo" (keyup)="applyFilter($event.target.value)">    
+    <mat-hint>Buscar por codigo</mat-hint>
+  </mat-form-field>            
+  </div>  
+  <br>
+  <br>
   
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -81,3 +61,18 @@
 <br>
 
 <div>
+
+  <div class="buttons">
+    <button mat-icon-button style="color:white; background: #5F6A6A " class="a" routerLink="home">
+        <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button style="color:white; background: #5F6A6A " class="a"  (click)="openDialog()">
+        <mat-icon>note_add</mat-icon>
+    </button>
+    <button mat-icon-button style="color:white; background: #5F6A6A " class="a" (click)="openDialogDelete()">
+        <mat-icon>delete_sweep</mat-icon>
+    </button>
+    <button mat-icon-button style="color:white; background: #5F6A6A " class="a" (click)="openDialogEdit()">
+        <mat-icon>create</mat-icon>
+    </button>
+</div>

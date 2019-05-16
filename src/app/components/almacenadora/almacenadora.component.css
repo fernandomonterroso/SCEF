@@ -24,13 +24,14 @@ font-family: 'Times New Roman';
   mat-card mat-card-title{
     text-align: center;
   }
-
-  #iconos2 p {
-    text-align: center;
+  .buttons{
+    margin: 0 auto; 
+    width: 300px;
+    padding: 25px 0;
+    text-align: center
   }
-
-  #iconos{
-    text-align: center;
+  
+  .a{
+    margin: 5px; 
   }
-
   

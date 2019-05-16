@@ -4,15 +4,13 @@ import {MatTableDataSource} from '@angular/material';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  canal: number;
+  descripcion: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
+  {canal: 1, descripcion: 'Cartera Cedido'},
+  {canal: 2, descripcion: 'Otras Empresas'},
   
 ];
 
@@ -24,8 +22,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class CanalesVentaComponent implements OnInit {
 
 
-  animal: string;
-  names: string;
+  canal: number;
+  descripcion: string;
   mostrar: Boolean;
   centered = false;
   disabled = false;
@@ -62,12 +60,12 @@ startTimer() {
     const dialogRef = this.dialog.open(DialogCanal, {
       width: '400px',
       height: '520px',      
-      data: {names: this.names, animal: this.animal}
+      data: {names: this.canal, animal: this.descripcion}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.animal = result;
+      this.descripcion = result;
     });
   }
 
@@ -75,7 +73,7 @@ startTimer() {
   ngOnInit() {
   }
 
-  displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['select', 'canala', 'descripcion'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
 
@@ -98,7 +96,7 @@ startTimer() {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.canal + 1}`;
   }
 
 }

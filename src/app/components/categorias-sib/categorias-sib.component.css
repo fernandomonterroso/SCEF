@@ -6,6 +6,17 @@
   text-align: center
 }
 
+.buttons{
+  margin: 0 auto; 
+  width: 300px;
+  padding: 25px 0;
+  text-align: center
+}
+
+.a{
+  margin: 5px; 
+}
+
 .example-full-width {
   width: 100%;
 }
@@ -24,13 +35,3 @@ table {
   background: #273746
 }
 
-.buttons{
-  margin: 0 auto; 
-  width: 300px;
-  padding: 25px 0;
-  text-align: center
-}
-
-.a{
-  margin: 5px; 
-}

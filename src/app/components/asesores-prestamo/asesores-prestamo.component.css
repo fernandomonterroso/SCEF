@@ -53,3 +53,13 @@
   display:block;
   }
   
+  .buttons{
+    margin: 0 auto; 
+    width: 300px;
+    padding: 25px 0;
+    text-align: center
+  }
+  
+  .a{
+    margin: 5px; 
+  }

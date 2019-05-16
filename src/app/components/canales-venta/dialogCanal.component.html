@@ -1,14 +1,11 @@
 <form>
-    <mat-card id="arriba">BANCO DE PRUEBA BYTE</mat-card>
-        <h1>Mantenimiento a Tipos de Canales de Distribución</h1>
         <br>
         <br>
         <br>
-        <h3>ALTAS</h3>
-      
-  
       <h4>Codigo </h4>
-      <mat-checkbox></mat-checkbox>
+      <mat-form-field >
+        <input matInput placeholder="Codigo Canal">
+      </mat-form-field>
       
       <br>
       <br>
@@ -22,8 +19,8 @@
       <br>
   
       
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Agregar</button>
   <br>
   <div id="iconos3">
   

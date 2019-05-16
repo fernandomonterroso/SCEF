@@ -40,6 +40,9 @@ export class ArchivosLimpiezaComponent implements OnInit {
 
   constructor(public dialog: MatDialog) {}
 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
   
 startTimer() {
   this.timeLeft = 2;

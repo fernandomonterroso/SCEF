@@ -65,3 +65,7 @@ display:none;
 .si {
 display:block;
 }
+
+.example-margin {
+  margin: 0 10px;
+}

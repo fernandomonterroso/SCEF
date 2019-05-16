@@ -4,12 +4,12 @@
 <div class="example-form">
   <mat-form-field appearance="outline">
     <mat-label>Buscar</mat-label>
-    <input matInput placeholder="Ingrese el codigo">    
+    <input matInput placeholder="Ingrese el codigo" (keyup)="applyFilter($event.target.value)">    
     <mat-hint>Buscar por codigo</mat-hint>
   </mat-form-field>
     <button mat-icon-button>
       <mat-icon matSuffix>search</mat-icon>
-    </button>                
+    </button>                 
   </div>  
   <br>
   <br>

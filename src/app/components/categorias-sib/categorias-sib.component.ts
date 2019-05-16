@@ -32,6 +32,10 @@ export class CategoriasSIBComponent implements OnInit {
 
   constructor(public dialog: MatDialog) {}
 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  
   openDialog(): void {
     const dialogRef = this.dialog.open(DailogAgregarCategoriaSIB, {
       width: '500px',
