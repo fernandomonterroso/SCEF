@@ -36,8 +36,31 @@ export class AlmacenadoraComponent implements OnInit {
   
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAlma, {
-      width: '60%',
-      height: '80%',      
+      width: '500px',
+      data: {names: this.names, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  openDialogEdit(): void {
+    const dialogRef = this.dialog.open(DialogActualizarAlma, {
+      width: '500px',      
+      data: {names: this.names, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  openDialogDelete(): void {
+    const dialogRef = this.dialog.open(DialogEliminarAlma, {
+      width: '500px',
       data: {names: this.names, animal: this.animal}
     });
 
@@ -101,5 +124,36 @@ export class DialogAlma {
 
 }
 
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'actualizar-almacenadora.component.html',
+  styleUrls: ['./almacenadora.component.css']
+})
+export class DialogActualizarAlma {
 
+  constructor(
+    public dialogRef: MatDialogRef<DialogActualizarAlma>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'eliminar-almacenadora.component.html',
+  styleUrls: ['./almacenadora.component.css']
+})
+export class DialogEliminarAlma {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogEliminarAlma>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}

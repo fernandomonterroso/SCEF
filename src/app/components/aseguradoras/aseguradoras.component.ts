@@ -35,8 +35,31 @@ export class AseguradorasComponent implements OnInit {
   
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAseg, {
-      width: '60%',
-      height: '80%',      
+      width: '500px',
+      data: {names: this.names, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  openDialogEdit(): void {
+    const dialogRef = this.dialog.open(DialogActualizarAseg, {
+      width: '500px',
+      data: {names: this.names, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  openDialogDelete(): void {
+    const dialogRef = this.dialog.open(DialogEliminarAseg, {
+      width: '500px',     
       data: {names: this.names, animal: this.animal}
     });
 
@@ -98,3 +121,35 @@ export class DialogAseg {
 
 }
 
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'actualizar-aseguradora.component.html',
+  styleUrls: ['./aseguradoras.component.css']
+})
+export class DialogActualizarAseg {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogActualizarAseg>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'eliminar-aseguradora.component.html',
+  styleUrls: ['./aseguradoras.component.css']
+})
+export class DialogEliminarAseg {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogEliminarAseg>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}

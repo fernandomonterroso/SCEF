@@ -56,6 +56,10 @@ import { AsignacionCategoriasComponent } from './components/Asignacion-de-Catego
 import { CopiarParametrosProductosComponent } from './components/Copiar-Parametros-de-Productos/Copiar-parametros-de-Productos.component';
 import { Estatuslegalescomponent } from './components/estatus-legales/estatus-legales.component';
 
+import { EnlaceContabilidadComponent } from './components/enlace-contabilidad/enlace-contabilidad.component';
+import { ContenidosContablesComponent } from './components/contenidos-contables/contenidos-contables.component';
+import { NivelesContabilizacionComponent } from './components/niveles-contabilizacion/niveles-contabilizacion.component';
+
 const routes: Routes = [
   {path: '', component: HomeComponent},
   //1-4
@@ -136,7 +140,10 @@ const routes: Routes = [
     {path: 'estatusLegales', component: Estatuslegalescomponent},
     {path: 'Home', component: HomeComponent},  
     
-
+  //CONTA
+  {path: 'enlaceContablidad', component: EnlaceContabilidadComponent},  
+  {path: 'nivelesContabilizacion', component: NivelesContabilizacionComponent},  
+  {path: 'contenidoContable', component: ContenidosContablesComponent},
     {path: '**', component: HomeComponent}
 
 ];

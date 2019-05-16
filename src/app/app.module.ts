@@ -20,10 +20,16 @@ import { CategoriasSIBComponent,
 import { AgrupacionCreditosComponent } from './components/agrupacion-creditos/agrupacion-creditos.component';
 import { AcercamientosComponent, 
          CrearAcercamiento } from './components/acercamientos/acercamientos.component';
-import { AlmacenadoraComponent } from './components/almacenadora/almacenadora.component';
+import { AlmacenadoraComponent,
+         DialogAlma,
+         DialogActualizarAlma,
+         DialogEliminarAlma } from './components/almacenadora/almacenadora.component';
 import { ArchivosLimpiezaComponent, 
          DialogLimpieza } from './components/archivos-limpieza/archivos-limpieza.component';
-import { AseguradorasComponent } from './components/aseguradoras/aseguradoras.component';
+import { AseguradorasComponent,
+         DialogAseg,
+         DialogActualizarAseg,
+         DialogEliminarAseg, } from './components/aseguradoras/aseguradoras.component';
 import { AsesoresPrestamoComponent,
          CrearAsesoresPrestamos } from './components/asesores-prestamo/asesores-prestamo.component';
 import { BancosComponent, 
@@ -138,13 +144,30 @@ import { DialogAsignacionCategorias,
          DialogAsignacionCategoriasT } from './components/Asignacion-de-Categorias/Asignacion-de-Categorias.component';
 import { dialogCopiarParametros } from './components/Copiar-Parametros-de-Productos/Copiar-parametros-de-Productos.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { EnlaceContabilidadComponent,
+         DailogAgregarEnlaceContabilidad, 
+         DailogEliminarEnlaceContabilidad, 
+         DailogEditarEnlaceContabilidad } from './components/enlace-contabilidad/enlace-contabilidad.component';
+import { NivelesContabilizacionComponent,
+         DailogAgregarNivelesContabilizacion,
+         DailogEliminarNivelesContabilizacion, } from './components/niveles-contabilizacion/niveles-contabilizacion.component';
+import { ContenidosContablesComponent,
+         DailogAgregarContenidosContables,
+         DailogEditarContenidosContables,
+         DailogEliminarContenidosContables, } from './components/contenidos-contables/contenidos-contables.component';         
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AlmacenadoraComponent,
+    DialogAlma,
+    DialogActualizarAlma,
+    DialogEliminarAlma,
     AseguradorasComponent,
+    DialogAseg,
+    DialogActualizarAseg,
+    DialogEliminarAseg,
     AgrupacionCreditosComponent,
     LugaresInversionComponent,
     UbicacionGarantiaComponent,
@@ -274,6 +297,17 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     DailogAgregarCriterio,
     DailogActualizarCriterio,
     DailogEliminarCriterio,
+    EnlaceContabilidadComponent,
+    DailogAgregarEnlaceContabilidad,
+    DailogEliminarEnlaceContabilidad,
+    DailogEditarEnlaceContabilidad,
+    NivelesContabilizacionComponent,
+    DailogAgregarNivelesContabilizacion,
+    DailogEliminarNivelesContabilizacion,
+    ContenidosContablesComponent,
+    DailogAgregarContenidosContables,
+    DailogEditarContenidosContables,
+    DailogEliminarContenidosContables,
   ],
   imports: [
     BrowserModule,
@@ -284,7 +318,13 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     MatRippleModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  entryComponents: [    
+  entryComponents: [
+    DialogAlma,
+    DialogActualizarAlma,
+    DialogEliminarAlma,    
+    DialogAseg,
+    DialogActualizarAseg,
+    DialogEliminarAseg,
     DailogAgregarCategoriaSIB,
     DailogEditarCategoriaSIB,  
     DailogEliminarCategoriaSIB,
@@ -364,6 +404,14 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     DialogE,
     DialogN,
     DialogA,
+    DailogAgregarEnlaceContabilidad,
+    DailogEliminarEnlaceContabilidad,
+    DailogEditarEnlaceContabilidad,
+    DailogAgregarNivelesContabilizacion,
+    DailogEliminarNivelesContabilizacion,
+    DailogAgregarContenidosContables,
+    DailogEditarContenidosContables,
+    DailogEliminarContenidosContables,
 
     HomeComponent
   ],
