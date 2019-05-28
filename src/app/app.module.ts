@@ -65,11 +65,22 @@ import { IngenierosValuadoresComponent,
 import { InstitucionesCobrosAdicionalesComponent,
          DialogCobrosAgregar, 
          DialogCobrosAgregarCheck } from './components/instituciones-cobros-adicionales/instituciones-cobros-adicionales.component';
-import { LugaresInversionComponent } from './components/lugares-inversion/lugares-inversion.component';
+import { LugaresInversionComponent,
+         DialogAgregarlugaresInversion,
+         DialogActualizarlugaresInversion,
+         DialogEliminarlugaresInversion } from './components/lugares-inversion/lugares-inversion.component';
 import { MotivosAjustesComponent, 
-         DialogMotivoAjuste } from './components/motivos-ajustes/motivos-ajustes.component';
+         DialogAgregarMotivoAjuste,
+         DialogActualizarMotivoAjuste,
+         DialogEliminarMotivoAjuste } from './components/motivos-ajustes/motivos-ajustes.component';
 import { MotivosReferenciasClientesComponent } from './components/motivos-referencias-clientes/motivos-referencias-clientes.component';
-import { MotivosReservasComponent } from './components/motivos-reservas/motivos-reservas.component';
+import { MotivosReservasComponent,
+         DailogAgregarMotivosReservasComponent,
+         DailogActualizarMotivosReservasComponent,
+         DailogEliminarMotivosReservasComponent,
+         DailogValorCobroComponent,
+         DailogAgregarValorCobroComponent,
+         DailogEliminarValorCobroComponent } from './components/motivos-reservas/motivos-reservas.component';
 import { NotariosComponent, 
          DialogNotario } from './components/notarios/notarios.component';
 import { ParametrizacionNumeroPrestamoComponent, 
@@ -81,15 +92,12 @@ import { RelacionTransaccionDepositosComponent,
 import { TiposCanalesDistribucionComponent, 
          DialogTiposC } from './components/tipos-canales-distribucion/tipos-canales-distribucion.component';
 import { TiposDeduccionesComponent, 
-        CrearTiposDeducciones } from './components/tipos-deducciones/tipos-deducciones.component';
+         CrearTiposDeducciones } from './components/tipos-deducciones/tipos-deducciones.component';
 import { TiposPrestamosComponent, DialogTp } from './components/tipos-prestamos/tipos-prestamos.component';
 import { TiposTransaccionesComponent, DialogTr } from './components/tipos-transacciones/tipos-transacciones.component';
 import { OrigenFondosComponent, DialogOrigen } from './components/origen-fondos/origen-fondos.component';
 import { MediosContactoComponent, DialogContacto } from './components/medios-contacto/medios-contacto.component';
-import { MontosPlazoComponent, 
-         DailogAgregarMontosPlazo, 
-         DailogEditarMontosPlazo,
-         DailogEliminarMontosPlazo } from './components/montos-plazo/montos-plazo.component';
+import { MontosPlazoComponent } from './components/montos-plazo/montos-plazo.component';
 import { DefinirCategoriaUsuarioComponent,
          DailogAgregarCategoriaUsuario,
          DailogEliminarCategoriaUsuario,
@@ -170,6 +178,9 @@ import { ContenidosContablesComponent,
     DialogEliminarAseg,
     AgrupacionCreditosComponent,
     LugaresInversionComponent,
+    DialogAgregarlugaresInversion,
+    DialogActualizarlugaresInversion,
+    DialogEliminarlugaresInversion,
     UbicacionGarantiaComponent,
     OrigenFondosComponent,
     FormasPagoComponent,
@@ -184,6 +195,12 @@ import { ContenidosContablesComponent,
     CobrosAdicionalesComponent,
     InstitucionesCobrosAdicionalesComponent,
     MotivosReservasComponent,
+    DailogAgregarMotivosReservasComponent,
+    DailogActualizarMotivosReservasComponent,
+    DailogEliminarMotivosReservasComponent,
+    DailogValorCobroComponent,
+    DailogAgregarValorCobroComponent,
+    DailogEliminarValorCobroComponent,
     FormasDesembolsoComponent,
     MotivosReferenciasClientesComponent,
     RelacionTransaccionDepositosComponent,
@@ -242,16 +259,15 @@ import { ContenidosContablesComponent,
     DialogDestinos,
     DialogDiaInhabil,
     DialogFormas,
-    DialogMotivoAjuste,
+    DialogAgregarMotivoAjuste,
+    DialogActualizarMotivoAjuste,
+    DialogEliminarMotivoAjuste,
     DialogNotario,
     DialogRelacion,
     DialogTiposC,
     CrearTiposDeducciones,
     DialogOrigen,
     DialogContacto,
-    DailogAgregarMontosPlazo,//-------
-    DailogEditarMontosPlazo,//--------
-    DailogEliminarMontosPlazo,//------
     DailogAgregarCategoriaUsuario,
     DailogEliminarCategoriaUsuario,
     DailogEditarCategoriaUsuario,
@@ -345,16 +361,15 @@ import { ContenidosContablesComponent,
     DialogDestinos,
     DialogDiaInhabil,
     DialogFormas,
-    DialogMotivoAjuste,
+    DialogAgregarMotivoAjuste,
+    DialogActualizarMotivoAjuste,
+    DialogEliminarMotivoAjuste,
     DialogNotario,
     DialogRelacion,
     DialogTiposC,
     CrearTiposDeducciones,
     DialogOrigen,
     DialogContacto,
-    DailogAgregarMontosPlazo,//-----------------
-    DailogEditarMontosPlazo,//------------------
-    DailogEliminarMontosPlazo,//----------------
     DailogAgregarCategoriaUsuario,
     DailogEliminarCategoriaUsuario,
     DailogEditarCategoriaUsuario,
@@ -412,6 +427,15 @@ import { ContenidosContablesComponent,
     DailogAgregarContenidosContables,
     DailogEditarContenidosContables,
     DailogEliminarContenidosContables,
+    DailogAgregarMotivosReservasComponent,
+    DailogActualizarMotivosReservasComponent,
+    DailogEliminarMotivosReservasComponent,
+    DailogValorCobroComponent,
+    DailogAgregarValorCobroComponent,
+    DailogEliminarValorCobroComponent,
+    DialogAgregarlugaresInversion,
+    DialogActualizarlugaresInversion,
+    DialogEliminarlugaresInversion,
 
     HomeComponent
   ],

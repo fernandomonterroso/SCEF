@@ -7,34 +7,21 @@
   <body>
       <!-- <mat-toolbar class="encabezado" color="primary">Montos por Plazo</mat-toolbar> -->
       
+      <div class="example-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Buscar</mat-label>
+          <input matInput placeholder="Ingrese el codigo" (keyup)="applyFilter($event.target.value)">    
+          <mat-hint>Buscar estado</mat-hint>
+        </mat-form-field>
+          <button mat-icon-button>
+            <mat-icon matSuffix>search</mat-icon>
+          </button>                 
+        </div>  
         <br>
+        <br>
+        
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       
-            <div id="buscador">                
-                <mat-form-field appearance="fill">
-                    <mat-label>Buscar por codigo</mat-label>
-                    <input matInput>                                                                                        
-                </mat-form-field>
-                <button mat-icon-button>
-                  <mat-icon matSuffix>search</mat-icon>
-                </button>                
-            </div>
-                        
-          
-    <!-- <form>
-          <br>
-          <div >
-              <mat-radio-group aria-label="Select an option">
-                  <mat-radio-button value="1">PARTICULAR</mat-radio-button>
-                  <mat-radio-button value="2">CUPOS</mat-radio-button>
-                  <mat-radio-button value="3">FLAT</mat-radio-button>
-                  <mat-radio-button value="4">EUROS</mat-radio-button>
-                  <mat-radio-button value="5">NO GRACIAS</mat-radio-button>            
-                </mat-radio-group>      
-          </div>
-    </form> -->
-    <br>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
         <!-- Checkbox Column -->
         <ng-container matColumnDef="select">
           <th mat-header-cell *matHeaderCellDef>
@@ -92,16 +79,10 @@
         <br>
         <div class="buttons">
           <mat-spinner *ngIf="showSpinner"></mat-spinner>
-            <button mat-icon-button style="color:white; background: #5F6A6A " class="a" onclick="location.href=''">
+            <button mat-icon-button style="color:white; background: #5F6A6A " class="a" routerLink="home">
                 <mat-icon>home</mat-icon>
-            </button>            
-            <button mat-icon-button style="color:white; background: #5F6A6A " class="a" (click)="openDialogAdd()">
-                <mat-icon>check</mat-icon>
-            </button>
-            <button mat-icon-button style="color:white; background: #5F6A6A " class="a" (click)="openDialogDelete()">
-                <mat-icon>delete_sweep</mat-icon>
-            </button>
-            <button mat-icon-button style="color:white; background: #5F6A6A " class="a" (click)="openDialogEdit()">
+            </button>                        
+            <button mat-icon-button style="color:white; background: #5F6A6A " class="a">
                 <mat-icon>help</mat-icon>
             </button>                      
         </div>

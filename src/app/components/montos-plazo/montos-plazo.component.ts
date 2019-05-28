@@ -44,47 +44,8 @@ export class MontosPlazoComponent implements OnInit {
 
   constructor(public dialog: MatDialog) {}
 
-  cargar(){
-    this.showSpinner = true;
-    setTimeout(()=>{
-      this.showSpinner = false;
-    },2000)
-  }
-
-  openDialogAdd(): void {
-    const dialogRef = this.dialog.open(DailogAgregarMontosPlazo, {
-      width: '500px',
-      data: {codigo: this.codigo, valorMinimo: this.valorMinimo, valorMaximo: this.valorMaximo, plazo: this.plazo, tasa: this.tasa}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.codigo = result;
-    });
-  }
-
-  openDialogDelete(): void {
-    const dialogRef = this.dialog.open(DailogEliminarMontosPlazo, {
-      width: '400px',
-      data: {codigo: this.codigo, valorMinimo: this.valorMinimo, valorMaximo: this.valorMaximo, plazo: this.plazo, tasa: this.tasa}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.codigo = result;
-    });
-  }
-
-  openDialogEdit(): void {
-    const dialogRef = this.dialog.open(DailogEditarMontosPlazo, {
-      width: '500px',
-      data: {codigo: this.codigo, valorMinimo: this.valorMinimo, valorMaximo: this.valorMaximo, plazo: this.plazo, tasa: this.tasa}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.codigo = result;
-    });
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   ngOnInit() {
@@ -114,59 +75,5 @@ export class MontosPlazoComponent implements OnInit {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.codigo + 1}`;
   }
-
-}
-
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: './agregar-montos-plazo.component.html',
-  styleUrls: ['./montos-plazo.component.css']
-})
-
-export class DailogAgregarMontosPlazo {
-
-  constructor(
-    public dialogRef: MatDialogRef<DailogAgregarMontosPlazo>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-    onNoClick(): void {
-      this.dialogRef.close();
-    }
-
-}
-
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: './editar-montos-plazo.component.html',
-  styleUrls: ['./montos-plazo.component.css']
-})
-
-export class DailogEditarMontosPlazo {
-
-  constructor(
-    public dialogRef: MatDialogRef<DailogEditarMontosPlazo>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-    onNoClick(): void {
-      this.dialogRef.close();
-    }
-
-}
-
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: './eliminar-montos-plazo.component.html',
-  styleUrls: ['./montos-plazo.component.css']
-})
-
-export class DailogEliminarMontosPlazo {
-
-  constructor(
-    public dialogRef: MatDialogRef<DailogEliminarMontosPlazo>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-    onNoClick(): void {
-      this.dialogRef.close();
-    }
 
 }
