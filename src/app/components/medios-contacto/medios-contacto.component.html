@@ -1,37 +1,8 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  
-  <title>Relación Transacciones Depósitos</title>
-  <link rel="stylesheet" type="text/css" href="">
-  <meta name="viewport"
-    content="width-device-width, user-scalable-no, initial-scale-1.0, maximum-scale-1.0,minimum-scale-1.0">
-
-</head>
-
-<body>
-  <div class="contenedor">
-    <mat-card id="arriba">BANCO DE PRUEBA BYTE</mat-card>
+  <div>
+    <mat-card>MANTENIMIENTO A MEDIOS CONTACTO</mat-card>
     <div>
-      <h5 id="Titulo">MANTENIMIENTO A TIPOS DE CANALES DE DISTRIBUCION</h5>
+      <h5 id="Titulo"></h5>
     </div>
-
-    <div id="iconos1">
-      <ul>
-        <ol>
-            <button mat-icon-button><mat-icon id="delete">edit</mat-icon></button>
-    </ol>
-    <ol>
-        <button mat-icon-button>  <mat-icon id="delete">delete</mat-icon></button>
-    </ol>
-    <ol>
-        <button mat-icon-button>  <mat-icon id="delete">search</mat-icon></button>
-    </ol>
-    </ul>
-    </div>
-
     
     <div class="division1">
       <mat-form-field appearance="outline" class="InputRA" >
@@ -44,7 +15,6 @@
           <mat-icon  matSuffix>search</mat-icon>
           </mat-form-field>
 
-      <h5 class="Nombre" >Seleccionar en Nombre</h5>
 
     </div>
 
@@ -102,38 +72,15 @@
 
 
 
-    <div id="iconos2">
-
-      <button mat-icon-button style=" background: #5F6A6A; margin-left: 12px">
-        <mat-icon id="back">arrow_back</mat-icon>
-      </button>
-      <button mat-icon-button style=" background: #5F6A6A; margin-left: 12px">
-        <mat-icon id="door">meeting_room</mat-icon>
-      </button >
-      <button mat-icon-button style=" background: #5F6A6A; margin-left: 12px">
-        <mat-icon id="arrow_left">subdirectory_arrow_left</mat-icon>
-      </button>
-      <button  mat-icon-button style=" background: #5F6A6A; margin-left: 12px"  (click)='startTimer()'>
-        <mat-icon id="add" title="Registrar" >note_add</mat-icon>
-      </button>
-      <button  mat-icon-button style=" background: #5F6A6A; margin-left: 12px">
-        <mat-icon id="table2">table_chart</mat-icon>
-      </button>
-      <button  mat-icon-button style=" background: #5F6A6A; margin-left: 12px">
-        <mat-icon id="table2">table_chart_outline</mat-icon>
-      </button>
-      <button  mat-icon-button style=" background: #5F6A6A; margin-left: 12px">
-        <mat-icon id="table2">help</mat-icon>
-      </button>
-      
-
-
+    <div id="iconos2">      
+      <button mat-icon-button style="color:white; background: #5F6A6A " class="a"  (click)="openDialog()">
+        <mat-icon>note_add</mat-icon>
+    </button>
+    <button mat-icon-button style="color:white; background: #5F6A6A " class="a" (click)="openDialogEliminar()">
+        <mat-icon>delete_sweep</mat-icon>
+    </button>
     </div>
 
 
 
   </div>
-
-</body>
-
-</html>

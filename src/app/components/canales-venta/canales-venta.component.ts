@@ -69,11 +69,23 @@ startTimer() {
     });
   }
 
+  openDialogEliminar(): void {
+    const dialogRef = this.dialog.open(DialogEliminarCanal, {
+      width: '500px',      
+      data: {names: this.canal, animal: this.descripcion}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.descripcion = result;
+    });
+  }
+
 
   ngOnInit() {
   }
 
-  displayedColumns: string[] = ['select', 'canala', 'descripcion'];
+  displayedColumns: string[] = ['select', 'canal', 'descripcion'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
 
@@ -116,6 +128,23 @@ export class DialogCanal {
 
   constructor(
     public dialogRef: MatDialogRef<DialogCanal>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'app-canales-venta',
+  templateUrl: './eliminar-canales-venta.component.html',
+  styleUrls: ['./canales-venta.component.css']
+})
+export class DialogEliminarCanal {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogEliminarCanal>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {

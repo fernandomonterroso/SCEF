@@ -36,7 +36,8 @@ import { AsesoresPrestamoComponent,
 import { BancosComponent, 
          CrearBancos } from './components/bancos/bancos.component';
 import { CanalesVentaComponent,
-         DialogCanal } from './components/canales-venta/canales-venta.component';
+         DialogCanal,
+         DialogEliminarCanal } from './components/canales-venta/canales-venta.component';
 import { CobrosAdicionalesComponent, 
          DialogCobroAdicional} from './components/cobros-adicionales/cobros-adicionales.component';
 import { DestinosComponent, 
@@ -98,7 +99,9 @@ import { TiposDeduccionesComponent,
 import { TiposPrestamosComponent, DialogTp } from './components/tipos-prestamos/tipos-prestamos.component';
 import { TiposTransaccionesComponent, DialogTr } from './components/tipos-transacciones/tipos-transacciones.component';
 import { OrigenFondosComponent, DialogOrigen } from './components/origen-fondos/origen-fondos.component';
-import { MediosContactoComponent, DialogContacto } from './components/medios-contacto/medios-contacto.component';
+import { MediosContactoComponent, 
+         DialogContacto,
+         DialogEliminarContacto } from './components/medios-contacto/medios-contacto.component';
 import { MontosPlazoComponent } from './components/montos-plazo/montos-plazo.component';
 import { DefinirCategoriaUsuarioComponent,
          DailogAgregarCategoriaUsuario,
@@ -260,6 +263,7 @@ import { ContenidosContablesComponent,
     CrearAcercamiento,
     CrearAsesoresPrestamos,
     DialogCanal,
+    DialogEliminarCanal,
     DialogCobroAdicional,
     DialogDestinos,
     DialogDiaInhabil,
@@ -274,6 +278,7 @@ import { ContenidosContablesComponent,
     CrearTiposDeducciones,
     DialogOrigen,
     DialogContacto,
+    DialogEliminarContacto,
     DailogAgregarCategoriaUsuario,
     DailogEliminarCategoriaUsuario,
     DailogEditarCategoriaUsuario,
@@ -367,6 +372,7 @@ import { ContenidosContablesComponent,
     CrearAcercamiento,
     CrearAsesoresPrestamos,
     DialogCanal,
+    DialogEliminarCanal,
     DialogCobroAdicional,
     DialogDestinos,
     DialogDiaInhabil,
@@ -381,6 +387,7 @@ import { ContenidosContablesComponent,
     CrearTiposDeducciones,
     DialogOrigen,
     DialogContacto,
+    DialogEliminarContacto,
     DailogAgregarCategoriaUsuario,
     DailogEliminarCategoriaUsuario,
     DailogEditarCategoriaUsuario,
