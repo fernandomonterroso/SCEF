@@ -25,7 +25,8 @@ import { AlmacenadoraComponent,
          DialogActualizarAlma,
          DialogEliminarAlma } from './components/almacenadora/almacenadora.component';
 import { ArchivosLimpiezaComponent, 
-         DialogLimpieza } from './components/archivos-limpieza/archivos-limpieza.component';
+         DialogLimpieza,
+         DialogEliminarArchivosLimpieza } from './components/archivos-limpieza/archivos-limpieza.component';
 import { AseguradorasComponent,
          DialogAseg,
          DialogActualizarAseg,
@@ -88,7 +89,8 @@ import { ParametrizacionNumeroPrestamoComponent,
 import { PasosCierreComponent, 
          DialogEventoPasos } from './components/pasos-cierre/pasos-cierre.component';
 import { RelacionTransaccionDepositosComponent, 
-         DialogRelacion } from './components/relacion-transaccion-depositos/relacion-transaccion-depositos.component';
+         DialogRelacion,
+         DialogEliminarRelacion } from './components/relacion-transaccion-depositos/relacion-transaccion-depositos.component';
 import { TiposCanalesDistribucionComponent, 
          DialogTiposC } from './components/tipos-canales-distribucion/tipos-canales-distribucion.component';
 import { TiposDeduccionesComponent, 
@@ -143,13 +145,16 @@ import { EventosSolicitudesComponent,
 import { DocumentosProductoComponent } from './components/documentos-producto/documentos-producto.component';
 import { PorcentajeFinanciamientoComponent } from './components/porcentaje-financiamiento/porcentaje-financiamiento.component';
 import { RangoPlazoInteresComponent } from './components/rango-plazo-interes/rango-plazo-interes.component';
-import { AsignacionCategoriasComponent } from './components/Asignacion-de-Categorias/Asignacion-de-Categorias.component';
+import { AsignacionCategoriasComponent,
+         DialogEliminarAsignacionCategorias,
+         DialogAsignacionCategorias,
+         DialogAsignacionCategoriasV,
+         DialogAsignacionCategoriasT,
+         DialogEliminarAsignacionTipoProducto } from './components/Asignacion-de-Categorias/Asignacion-de-Categorias.component';
 import { CopiarParametrosProductosComponent } from './components/Copiar-Parametros-de-Productos/Copiar-parametros-de-Productos.component';
 import { Estatuslegalescomponent, 
          dialogEstatusLegales } from './components/estatus-legales/estatus-legales.component';
 import { DialogDocumentoProducto } from './components/documentos-producto/documentos-producto.component';
-import { DialogAsignacionCategorias, 
-         DialogAsignacionCategoriasT } from './components/Asignacion-de-Categorias/Asignacion-de-Categorias.component';
 import { dialogCopiarParametros } from './components/Copiar-Parametros-de-Productos/Copiar-parametros-de-Productos.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { EnlaceContabilidadComponent,
@@ -264,6 +269,7 @@ import { ContenidosContablesComponent,
     DialogEliminarMotivoAjuste,
     DialogNotario,
     DialogRelacion,
+    DialogEliminarRelacion,
     DialogTiposC,
     CrearTiposDeducciones,
     DialogOrigen,
@@ -281,6 +287,7 @@ import { ContenidosContablesComponent,
     DialogParaPrestamoAgregar,
     DialogEventoPasos,
     DialogLimpieza,
+    DialogEliminarArchivosLimpieza,
     DialogArchivos,
     CrearProducto,
     EditarProducto,
@@ -290,7 +297,10 @@ import { ContenidosContablesComponent,
     DialogEvento,
     DialogDocumentoProducto,
     DialogAsignacionCategorias,
+    DialogEliminarAsignacionCategorias,
+    DialogAsignacionCategoriasV,
     DialogAsignacionCategoriasT,
+    DialogEliminarAsignacionTipoProducto,
     dialogCopiarParametros,
     dialogEstatusLegales,
     CrearBancos,
@@ -366,6 +376,7 @@ import { ContenidosContablesComponent,
     DialogEliminarMotivoAjuste,
     DialogNotario,
     DialogRelacion,
+    DialogEliminarRelacion,
     DialogTiposC,
     CrearTiposDeducciones,
     DialogOrigen,
@@ -383,6 +394,7 @@ import { ContenidosContablesComponent,
     DialogParaPrestamoAgregar,
     DialogEventoPasos,
     DialogLimpieza,
+    DialogEliminarArchivosLimpieza,
     DialogArchivos,
     CrearProducto,
     EditarProducto,
@@ -393,7 +405,10 @@ import { ContenidosContablesComponent,
     DialogDocumentoProducto,
     DialogAsignacionCategorias,
     DialogAsignacionCategorias,
+    DialogEliminarAsignacionCategorias,
+    DialogAsignacionCategoriasV,
     DialogAsignacionCategoriasT,
+    DialogEliminarAsignacionTipoProducto,
     dialogCopiarParametros,
     dialogEstatusLegales,
     CrearBancos,

@@ -1,83 +1,26 @@
-<form>
+<h1 id="Titulo">Mantenimiento A Autorizaciones Por Tipo de Producto</h1>
 
-        <mat-card id="arriba">BANCO DE PRUEBA BYTE</mat-card>
-    
-        <h1 id="Titulo">Mantenimiento A Autorizaciones Por Tipo de Producto</h1>
-        
-        
-
-<form>
-<table style="margin: auto;" class="letra">
-<tr>
-<tr>
-<td><h4>Usuario:  </h4></td>
-<td>
 <mat-form-field>
-<input  placeholder="RjChavez">
-<input class="IDerecha" placeholder="Input">
+  <input class="inputAgregar" readonly matInput placeholder="Usuario">
+</mat-form-field><br>
+<mat-form-field>
+  <input class="inputAgregar" readonly matInput placeholder="Categoria">
+</mat-form-field><br>
+<mat-form-field>
+  <input class="inputAgregar" readonly matInput placeholder="Agencia">
 </mat-form-field>
-</td>
-</tr>
-<tr>
-<td><h4>Categoria:</h4></td>
-<td>
-<mat-form-field>
-    <input class="Pe" placeholder="Input">
-    <input class="G" placeholder="Input">
+<br>
+<br>
+<form>  
+
+    <button style="width: 10px; height: 25px"> </button> 
+    <mat-form-field>
+        <input class="inputAgregar" readonly matInput placeholder="Tipo Prodcto">
     </mat-form-field>
-</td>
-</tr>
-<tr>
-<td><h4>Agencia:  </h4></td>
-<td>
-<mat-form-field>
-        <input class="Pe" placeholder="Input">
-        <input class="G" placeholder="Input">
-        </mat-form-field>
-</td>
-</tr>
-
-</table > 
-<mat-toolbar class="dialog">Altas</mat-toolbar>
-
-<h5>Tipo de Producto</h5>
-<mat-checkbox></mat-checkbox>
-<input class="Pi" matInput placeholder="Input">
-
-     <br>
-     <br>
-     <mat-spinner class="capa1" *ngIf="mostrar"></mat-spinner>
-      
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
-  <br>
-  <br>
-     <br>
-  <div id="iconos3">
-  
-      <button mat-icon-button style=" background: #5F6A6A; margin-left: 12px">
-        <mat-icon id="back">arrow_back</mat-icon>
-      </button>
-      <button mat-icon-button style=" background: #5F6A6A; margin-left: 12px">
-        <mat-icon id="door">meeting_room</mat-icon>
-      </button >
-      <button mat-icon-button style=" background: #5F6A6A; margin-left: 12px">
-        <mat-icon id="arrow_left">subdirectory_arrow_left</mat-icon>
-      </button>
-      <button mat-icon-button style=" background: #5F6A6A; margin-left: 12px" >
-            <mat-icon id="add" title="Registrar">table</mat-icon>
-          </button>
-      <button mat-icon-button style=" background: #5F6A6A; margin-left: 12px" (click)='openDialogT'>
-        <mat-icon id="add" title="Registrar">check</mat-icon>
-      </button>
-      <button mat-icon-button style=" background: #5F6A6A; margin-left: 12px">
-        <mat-icon id="table2">help</mat-icon>
-      </button>
-      
-      
-  
-  
-    </div>
+    <br>
+    <br>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
   </form>
   
   

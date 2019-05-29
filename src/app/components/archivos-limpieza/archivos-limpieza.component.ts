@@ -64,8 +64,19 @@ startTimer() {
   
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogLimpieza, {
-      width: '60%',
-      height: '80%', 
+      width: '500px', 
+      data: {names: this.names, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  openDialogEliminar(): void {
+    const dialogRef = this.dialog.open(DialogEliminarArchivosLimpieza, {
+      width: '500px', 
       data: {names: this.names, animal: this.animal}
     });
 
@@ -121,6 +132,23 @@ export class DialogLimpieza {
 
   constructor(
     public dialogRef: MatDialogRef<DialogLimpieza>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogPasos) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'eliminar-archivos-limpieza.component.html',
+  styleUrls: ['./archivos-limpieza.component.css']
+})
+export class DialogEliminarArchivosLimpieza {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogEliminarArchivosLimpieza>,
     @Inject(MAT_DIALOG_DATA) public data: DialogPasos) {}
 
   onNoClick(): void {
