@@ -117,32 +117,13 @@
 
     
 
-    <div id="iconos2">
-
-      <button mat-icon-button style=" background: #5F6A6A; margin-left: 12px">
-        <mat-icon id="back" >home</mat-icon>
-      </button>
-      <button mat-icon-button style=" background: #5F6A6A; margin-left: 12px">
-        <mat-icon id="door">meeting_room</mat-icon>
-      </button>
-      <button mat-icon-button style=" background: #5F6A6A; margin-left: 12px">
-        <mat-icon id="arrow_left">subdirectory_arrow_left</mat-icon>
-      </button>
-      <button mat-icon-button style=" background: #5F6A6A; margin-left: 12px"  (click)='startTimer()'>
-        <mat-icon id="add" title="Registrar">note_add</mat-icon>
-      </button>
-      <button mat-icon-button style=" background: #5F6A6A; margin-left: 12px" >
-        <mat-icon id="table2">table_chart</mat-icon>
-      </button>
-      <button mat-icon-button style=" background: #5F6A6A; margin-left: 12px"  >
-        <mat-icon id="table2">table_chart_outline</mat-icon>
-      </button>
-      <button mat-icon-button style=" background: #5F6A6A; margin-left: 12px"  >
-        <mat-icon id="table2">help</mat-icon>
-      </button>
-      
-
-
+    <div class="buttons">
+      <button mat-icon-button style="color:white; background: #5F6A6A " class="a"  (click)="openDialog()">
+        <mat-icon>note_add</mat-icon>
+    </button>
+    <button mat-icon-button style="color:white; background: #5F6A6A " class="a" (click)="openDialogEliminar()">
+        <mat-icon>delete_sweep</mat-icon>
+    </button>
     </div>
 
 

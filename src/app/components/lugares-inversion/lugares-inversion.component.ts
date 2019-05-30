@@ -4,9 +4,9 @@ import {MatTableDataSource} from '@angular/material';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 export interface PeriodicElement {
-  descripcion: string;
   codigo: number;
-}
+  descripcion: string;  
+} 
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {codigo: 1, descripcion: 'Hydrogen'},
@@ -23,20 +23,44 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./lugares-inversion.component.css']
 })
 export class LugaresInversionComponent implements OnInit {
-  animal: string;
-  names: string;
+  codigo: number;
+  descripcion: string;
+  equivalente: string;
 
   constructor(public dialog: MatDialog) { }
   openDialog(): void {
-    const dialogRef = this.dialog.open(Dialoglug, {
-      width: '60%',
-      height: '80%',      
-      data: {names: this.names, animal: this.animal}
+    const dialogRef = this.dialog.open(DialogAgregarlugaresInversion, {
+      width: '500px',  
+      data: {codigo: this.codigo, descripcion: this.descripcion, equivalente: this.equivalente}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.animal = result;
+      this.descripcion = result;
+    });
+  }
+
+  openDialogEditar(): void {
+    const dialogRef = this.dialog.open(DialogActualizarlugaresInversion, {
+      width: '500px',     
+      data: {codigo: this.codigo, descripcion: this.descripcion, equivalente: this.equivalente}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.descripcion = result;
+    });
+  }
+
+  openDialogEliminar(): void {
+    const dialogRef = this.dialog.open(DialogEliminarlugaresInversion, {
+      width: '500px',     
+      data: {codigo: this.codigo, descripcion: this.descripcion, equivalente: this.equivalente}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.descripcion = result;
     });
   }
   
@@ -82,10 +106,44 @@ export interface DialogData {
   templateUrl: 'agregar-lugar.component.html',
   styleUrls: ['./lugares-inversion.component.css']
 })
-export class Dialoglug {
+export class DialogAgregarlugaresInversion {
 
   constructor(
-    public dialogRef: MatDialogRef<Dialoglug>,
+    public dialogRef: MatDialogRef<DialogAgregarlugaresInversion>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'actualizar-lugar.component.html',
+  styleUrls: ['./lugares-inversion.component.css']
+})
+export class DialogActualizarlugaresInversion {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogActualizarlugaresInversion>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'eliminar-lugar.component.html',
+  styleUrls: ['./lugares-inversion.component.css']
+})
+export class DialogEliminarlugaresInversion {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogEliminarlugaresInversion>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {

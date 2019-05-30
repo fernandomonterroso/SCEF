@@ -51,9 +51,32 @@ export class MotivosAjustesComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogMotivoAjuste, {
-      width: '60%',
-      height: '80%', 
+    const dialogRef = this.dialog.open(DialogAgregarMotivoAjuste, {
+      width: '500px', 
+      data: {names: this.names, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  openDialogEditar(): void {
+    const dialogRef = this.dialog.open(DialogActualizarMotivoAjuste, {
+      width: '500px', 
+      data: {names: this.names, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  openDialogEliminar(): void {
+    const dialogRef = this.dialog.open(DialogEliminarMotivoAjuste, {
+      width: '500px', 
       data: {names: this.names, animal: this.animal}
     });
 
@@ -106,10 +129,44 @@ export interface DialogData {
   templateUrl: 'agregar-motivos-ajustes.component.html',
   styleUrls: ['./motivos-ajustes.component.css']
 })
-export class DialogMotivoAjuste {
+export class DialogAgregarMotivoAjuste {
 
   constructor(
-    public dialogRef: MatDialogRef<DialogMotivoAjuste>,
+    public dialogRef: MatDialogRef<DialogAgregarMotivoAjuste>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'actualizar-motivos-ajustes.component.html',
+  styleUrls: ['./motivos-ajustes.component.css']
+})
+export class DialogActualizarMotivoAjuste {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogActualizarMotivoAjuste>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'eliminar-motivos-ajustes.component.html',
+  styleUrls: ['./motivos-ajustes.component.css']
+})
+export class DialogEliminarMotivoAjuste {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogEliminarMotivoAjuste>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {

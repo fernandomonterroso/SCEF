@@ -73,6 +73,19 @@ startTimer() {
     });
   }
 
+  openDialogEliminar(): void {
+    const dialogRef = this.dialog.open(DialogEliminarContacto, {
+      width: '400px',
+      height:'700px',      
+      data: {names: this.names, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
 
   ngOnInit() {
   }
@@ -121,6 +134,24 @@ export class DialogContacto {
 
   constructor(
     public dialogRef: MatDialogRef<DialogContacto>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'Dialog-Contacto',
+  templateUrl: 'Dialog-eliminar-medios-coontacto.component.html',
+  styleUrls: ['./medios-contacto.component.css']
+})
+export class DialogEliminarContacto {
+  
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogEliminarContacto>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {

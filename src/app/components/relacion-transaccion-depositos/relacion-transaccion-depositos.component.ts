@@ -61,8 +61,19 @@ startTimer() {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogRelacion, {
-      width: '600px',
-      height: '600px',      
+      width: '600px',      
+      data: {names: this.names, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  openDialogEliminar(): void {
+    const dialogRef = this.dialog.open(DialogEliminarRelacion, {
+      width: '600px',      
       data: {names: this.names, animal: this.animal}
     });
 
@@ -119,6 +130,23 @@ export class DialogRelacion {
 
   constructor(
     public dialogRef: MatDialogRef<DialogRelacion>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'app-relacion-transaccion-depositos',
+  templateUrl: './eliminar-relacion-transaccion-depositos.component.html',
+  styleUrls: ['./relacion-transaccion-depositos.component.css']
+})
+export class DialogEliminarRelacion {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogEliminarRelacion>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {
