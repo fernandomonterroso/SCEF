@@ -184,6 +184,7 @@ import { ContenidosContablesComponent,
          DailogAgregarContenidosContables,
          DailogEditarContenidosContables,
          DailogEliminarContenidosContables, } from './components/contenidos-contables/contenidos-contables.component';         
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -371,6 +372,7 @@ import { ContenidosContablesComponent,
     AppRoutingModule,
     FormsModule,
     MatRippleModule,
+    HttpClientModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [

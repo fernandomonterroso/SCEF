@@ -1,9 +1,3 @@
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class GlobalService {
-
-  constructor() { }
+export var GLOBAL = {
+  url: 'http://13.58.152.114:5000/v1/'
 }
