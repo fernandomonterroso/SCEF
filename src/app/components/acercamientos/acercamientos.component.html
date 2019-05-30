@@ -5,11 +5,11 @@
     <span style="flex: 1 1 auto"></span>
     <span>Acercamientos</span>
   </mat-toolbar> 
-</div> -->A
+</div> -->
 
 <!-- <div style="padding: 20px; margin-top: 5%"></div> -->
 
-<div class="example-form">
+<div class="example-form" style="text-align: center">
   <mat-form-field appearance="outline">
     <mat-label>Buscar</mat-label>
     <input matInput placeholder="Ingrese el codigo" (keyup)="applyFilter($event.target.value)">    
@@ -64,10 +64,10 @@
   <button mat-icon-button style="color:white; background: #5F6A6A " class="a"  (click)="openDialog()">
       <mat-icon>note_add</mat-icon>
   </button>
-  <button mat-icon-button style="color:white; background: #5F6A6A " class="a" (click)="openDialogDelete()">
+  <button mat-icon-button style="color:white; background: #5F6A6A " class="a" (click)="openDialogEliminar()">
       <mat-icon>delete_sweep</mat-icon>
   </button>
-  <button mat-icon-button style="color:white; background: #5F6A6A " class="a" (click)="openDialogEdit()">
+  <button mat-icon-button style="color:white; background: #5F6A6A " class="a" (click)="openDialogEditar()">
       <mat-icon>create</mat-icon>
   </button>
 </div>

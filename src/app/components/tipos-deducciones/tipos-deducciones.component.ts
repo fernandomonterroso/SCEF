@@ -1,6 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
-import {MatTableDataSource} from '@angular/material';
+import {MatTableDataSource, MatPaginator} from '@angular/material';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 export interface PeriodicElement {
@@ -45,8 +45,34 @@ export class TiposDeduccionesComponent implements OnInit {
     });
   }
 
+  openDialogEliminar(): void {
+    const dialogRef = this.dialog.open(EliminarTiposDeducciones, {
+      width: '500px',      
+      data: {names: this.names, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  openDialogEditar(): void {
+    const dialogRef = this.dialog.open(ActualizarTiposDeducciones, {
+      width: '300px',      
+      data: {names: this.names, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
  displayedColumns: string[] = ['select', 'number', 'description'];
@@ -98,6 +124,40 @@ export class CrearTiposDeducciones {
 
   constructor(
     public dialogRef: MatDialogRef<CrearTiposDeducciones>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'actualizar-tipo-deduccion.component.html',
+  styleUrls: ['./tipos-deducciones.component.css']
+})
+export class ActualizarTiposDeducciones {
+
+  constructor(
+    public dialogRef: MatDialogRef<ActualizarTiposDeducciones>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'eliminar-tipo-deduccion.component.html',
+  styleUrls: ['./tipos-deducciones.component.css']
+})
+export class EliminarTiposDeducciones {
+
+  constructor(
+    public dialogRef: MatDialogRef<EliminarTiposDeducciones>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {
