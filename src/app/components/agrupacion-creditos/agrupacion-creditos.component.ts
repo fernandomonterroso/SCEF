@@ -36,8 +36,19 @@ export class AgrupacionCreditosComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogCred, {
-      width: '60%',
-      height: '80%',      
+      width: '500px',      
+      data: {names: this.names, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  openDialogEliminar(): void {
+    const dialogRef = this.dialog.open(DialogEliminarCred, {
+      width: '500px',      
       data: {names: this.names, animal: this.animal}
     });
 
@@ -92,6 +103,23 @@ export class DialogCred {
 
   constructor(
     public dialogRef: MatDialogRef<DialogCred>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'eliminar-agrupacion-credirtos.component.html',
+  styleUrls: ['./agrupacion-creditos.component.css']
+})
+export class DialogEliminarCred {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogEliminarCred>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {
