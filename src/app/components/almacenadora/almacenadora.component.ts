@@ -13,11 +13,13 @@ import { AlmacenadoraService } from 'src/app/services/almacenadora.service';
 })
 export class AlmacenadoraComponent implements OnInit {
   public almacenadoras: Almacenadora[];
+  
   public status: string;
   public numeroPagina: number = 0;
-  public numeroItems: number = 10;
+  public numeroItems: number = 5;
   public primeraPagina: boolean;
   public ultimaPagina: boolean;
+  public listarNumeroPagina: number = 0;
   public cantidadActual: number;
   public almacenadoraModel: Almacenadora;
   public almacenadoraEditable: Almacenadora;
@@ -30,7 +32,7 @@ export class AlmacenadoraComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource2.filter = filterValue.trim().toLowerCase();
   }
 
 
@@ -98,6 +100,20 @@ export class AlmacenadoraComponent implements OnInit {
     this.almacenadoraModel = new Almacenadora(0, 0, '', '', '1', true);
   }
 
+  siguientePagina(){
+    if(!this.ultimaPagina){
+      ++this.listarNumeroPagina;
+      this.listarAlmacenadorasParaTabla()
+    }
+  }
+
+  anteriorPagina(){
+    if(!this.primeraPagina){
+      --this.listarNumeroPagina;
+      this.listarAlmacenadorasParaTabla()
+    }
+  }
+
   listarAlmacenadorasParaTabla() {
     this._almacenadoraService.listarPagina(this.numeroPagina, this.numeroItems).subscribe(
       response => {
@@ -107,7 +123,7 @@ export class AlmacenadoraComponent implements OnInit {
           console.log(this.almacenadoras);
           this.primeraPagina = response.first;
           this.ultimaPagina = response.last;
-          this.cantidadActual = response.numberOfElements;
+          this.listarNumeroPagina = response.numberOfElements;
           this.status = 'ok';
         }
       }, error => {
@@ -190,7 +206,6 @@ export class AlmacenadoraComponent implements OnInit {
         if (response.code == 0) {
           this.almacenadoraEditable = response;
           console.log(this.almacenadoraEditable)
-          this.listarAlmacenadorasParaTabla();
           this.status = 'ok';
         } else {
           this.status = 'error';

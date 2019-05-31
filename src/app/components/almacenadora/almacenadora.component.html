@@ -59,6 +59,12 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
   </tr>
 </table>
+<button mat-icon-button style="color:white; background: #5F6A6A " class="a" (click)="siguientePagina()">
+  <mat-icon>home</mat-icon>
+</button>
+<button mat-icon-button style="color:white; background: #5F6A6A " class="a" (click)="anteriorPagina()">
+  <mat-icon>note_add</mat-icon>
+</button>
 <br>
 <br>
 <div class="buttons">
