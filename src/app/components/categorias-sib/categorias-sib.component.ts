@@ -2,82 +2,131 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatTableDataSource} from '@angular/material';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-
-export interface DialogData {
-  codigo: number;
-  descripcion: string;
-}
-
-
-export interface PeriodicElement {
-  codigo: number;
-  descripcion: string;
-}
-const ELEMENT_DATA: PeriodicElement[] = [
-  {codigo: 1, descripcion: 'estado 1'},
-  {codigo: 2, descripcion: 'estado 2'},
-  {codigo: 3, descripcion: 'estado 3'},
-  {codigo: 4, descripcion: 'estado 4'},
-  {codigo: 5, descripcion: 'estado 5'},
-];
+import { CategoriaSibService } from 'src/app/services/categoria-sib.service';
+import { CategoriaSib } from 'src/app/models/categoriaSib.model';
 
 @Component({
   selector: 'app-categorias-sib',
   templateUrl: './categorias-sib.component.html',
-  styleUrls: ['./categorias-sib.component.css']
+  styleUrls: ['./categorias-sib.component.css'],
+  providers: [CategoriaSibService]
 })
 export class CategoriasSIBComponent implements OnInit {
-  codigo: number;
-  descripcion: string;
+  public categorias: CategoriaSib[];
+  public status: string;
+  public numeroPagina: number = 0;
+  public numeroItems: number = 7;
+  public primeraPagina: boolean;
+  public ultimaPagina: boolean;
+  public cantidadActual: number;
+  public categoriaModel: CategoriaSib;
+  public categoriaEditable: CategoriaSib;
+  public dataSource2;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private _categoriaService: CategoriaSibService) {
+    this.limpiarVariables();
+  }
 
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource2.filter = filterValue.trim().toLowerCase(); 
   }
   
   openDialog(): void {
     const dialogRef = this.dialog.open(DailogAgregarCategoriaSIB, {
       width: '500px',
-      data: {codigo: this.codigo, descripcion: this.descripcion}
+      data: {codigo: this.categoriaModel.codigo, descripcion: this.categoriaModel.descripcion},      
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.descripcion = result;
+      this.categoriaModel.codigo = result.codigo;
+      this.categoriaModel.descripcion = result.descripcion;
+      console.log(result);
+      console.table(this.categoriaModel);
+      this.agregar();
+      this.limpiarVariables()
     });
   }
 
   openDialogDelete(): void {
     const dialogRef = this.dialog.open(DailogEliminarCategoriaSIB, {
       width: '500px',
-      data: {codigo: this.codigo, descripcion: this.descripcion}
+      data: {codigo: this.categoriaModel.codigo, descripcion: this.categoriaModel.descripcion}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.descripcion = result;
+      this.categoriaModel.descripcion = result.descripcion;
     });
   }
 
   openDialogEdit(): void {
     const dialogRef = this.dialog.open(DailogEditarCategoriaSIB, {
       width: '500px',
-      data: {codigo: this.codigo, descripcion: this.descripcion}
+      data: {codigo: this.categoriaModel.codigo, descripcion: this.categoriaModel.descripcion}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.descripcion = result;
+      this.categoriaEditable.descripcion = result.descripcion;
     });
   }
 
   ngOnInit() {
+    this.listarCategoriasParaTabla()
+  }
+
+  limpiarVariables(){
+    this.categoriaModel = new CategoriaSib(0,'','','','1',true)
+    this.categoriaEditable = new CategoriaSib(0,'','','','1',true)
+  }
+
+  agregar() {
+    this._categoriaService.crearCategoria(this.categoriaModel).subscribe(
+      response => {
+        console.log(response)
+        this.listarCategoriasParaTabla();
+        if (response.code == 0) {
+          this.status = 'ok';          
+        } else {
+          alert(response.description);
+        }
+      }, error => {
+        let errorMessage = <any>error;
+        console.log(errorMessage);
+        if (errorMessage != null) {
+          alert(error.description);
+          this.status = 'error';
+        }
+      }
+    );
+  }
+
+  listarCategoriasParaTabla() {
+    this._categoriaService.listarPagina(this.numeroPagina, this.numeroItems).subscribe(
+      response => {
+        if (response.content) {
+          this.categorias = response.content;
+          this.dataSource2 = new MatTableDataSource<CategoriaSib>(this.categorias);
+          console.log(this.categorias);
+          this.primeraPagina = response.first;
+          this.ultimaPagina = response.last;
+          this.cantidadActual = response.numberOfElements;
+          this.status = 'ok';
+        }
+      }, error => {
+        let errorMessage = <any>error;
+        console.log(errorMessage);
+        if (errorMessage != null) {
+          this.status = 'error';
+        }
+      }
+    );
   }
 
   displayedColumns: string[] = ['select', 'codigo','descripcion'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  selection = new SelectionModel<PeriodicElement>(true, []);
+  dataSource = new MatTableDataSource<CategoriaSib>(this.categorias);
+  selection = new SelectionModel<CategoriaSib>(true, []);
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
@@ -94,7 +143,7 @@ export class CategoriasSIBComponent implements OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: PeriodicElement): string {
+  checkboxLabel(row?: CategoriaSib): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
@@ -112,7 +161,7 @@ export class DailogAgregarCategoriaSIB {
 
   constructor(
     public dialogRef: MatDialogRef<DailogAgregarCategoriaSIB>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public data: CategoriaSib) {}
 
     onNoClick(): void {
       this.dialogRef.close();
@@ -129,7 +178,7 @@ export class DailogEliminarCategoriaSIB {
 
   constructor(
     public dialogRef: MatDialogRef<DailogEliminarCategoriaSIB>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public data: CategoriaSib) {}
 
     onNoClick(): void {
       this.dialogRef.close();
@@ -143,10 +192,13 @@ export class DailogEliminarCategoriaSIB {
   styleUrls: ['./categorias-sib.component.css']
 })
 export class DailogEditarCategoriaSIB {
+  public categoriaModel: CategoriaSib;
 
   constructor(
     public dialogRef: MatDialogRef<DailogEditarCategoriaSIB>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public data: CategoriaSib) {
+      this.categoriaModel = new CategoriaSib(0,'','','','1',true)
+    }
 
     onNoClick(): void {
       this.dialogRef.close();

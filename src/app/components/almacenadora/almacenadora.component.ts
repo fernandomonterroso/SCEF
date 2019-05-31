@@ -134,6 +134,9 @@ export class AlmacenadoraComponent implements OnInit {
     this._almacenadoraService.listarAlmacenadora(id).subscribe(
       response => {
         if (response.content) {
+          console.table(response)
+          console.table(response.content)
+          console.log(response)
           this.listarAlmacenadorasParaTabla();
           this.limpiarVariables();
           this.status = 'ok';
