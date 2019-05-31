@@ -1,15 +1,17 @@
 <mat-toolbar color="primary" class="encabezado">Agregar Estado Garantia</mat-toolbar>
 <br>
-<div mat-dialog-content>  
+<form>
+  <div mat-dialog-content>  
     <mat-form-field>
-        <input matInput placeholder="Codigo categoria">
+        <input matInput placeholder="Codigo categoria" [(ngModel)]="data.codigo" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
     <br>
     <mat-form-field>
-        <input matInput placeholder="Descripcion categoria">
+        <input matInput placeholder="Descripcion categoria" [(ngModel)]="data.descripcion" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
   </div>
   <div mat-dialog-actions>
     <button mat-button color="primary" (click)="onNoClick()">Cancelar</button>
-    <button mat-button color="primary" [mat-dialog-close]="data.estatus" cdkFocusInitial>Agregar</button>
+    <button type="submit" color="primary" mat-button [mat-dialog-close]="data" cdkFocusInitial>Guardar</button>
   </div>
+</form>

@@ -70,6 +70,18 @@ startTimer() {
     });
   }
 
+  openDialogEliminar(): void {
+    const dialogRef = this.dialog.open(DialogEliminarTiposC, {
+      width: '600px',      
+      data: {names: this.names, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
 
   ngOnInit() {
   }
@@ -117,6 +129,23 @@ export class DialogTiposC {
 
   constructor(
     public dialogRef: MatDialogRef<DialogTiposC>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'app-tipos-canales-distribucion',
+  templateUrl: './eliminar-tipos-canales.component.html',
+  styleUrls: ['./tipos-canales-distribucion.component.css']
+})
+export class DialogEliminarTiposC {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogEliminarTiposC>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {

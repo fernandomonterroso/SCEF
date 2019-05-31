@@ -26,10 +26,27 @@ export class TiposTransaccionesComponent implements OnInit {
   names: string;
 
   constructor(public dialog: MatDialog) { }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogTr, {
-      width: '60%',
-      height: '80%',      
+      width: '600px',      
+      data: {names: this.names, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  openDialogEliminar(): void {
+    const dialogRef = this.dialog.open(DialogEliminarTr, {
+      width: '500px',      
       data: {names: this.names, animal: this.animal}
     });
 
@@ -84,6 +101,22 @@ export class DialogTr {
 
   constructor(
     public dialogRef: MatDialogRef<DialogTr>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'eliminar-tipos-transacciones.component.html',
+  styleUrls: ['./tipos-transacciones.component.css']
+})
+export class DialogEliminarTr {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogEliminarTr>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {

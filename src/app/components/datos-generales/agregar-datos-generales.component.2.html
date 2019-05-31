@@ -1,27 +1,19 @@
-<mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <mat-icon>vpn_lock</mat-icon>
-      <span>Byte</span>   
-    </mat-toolbar-row>
-  </mat-toolbar>
-  <br>
+
   <mat-card class="centro"><mat-card-title>Configuracion del sistema</mat-card-title></mat-card>
 <br>
 <br>
 
-<table class="centro">
+<form>
     <br>
-  
-        <p>
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Fecha de Valor">
-          </mat-form-field>
-          </p>
+    Proceso de Fecha valor<br>
+    <mat-form-field>
+        <input matInput [matDatepicker]="pickerFechaInicio" placeholder="Fecha inicio gestion">
+        <mat-datepicker-toggle matSuffix [for]="pickerFechaInicio"></mat-datepicker-toggle>
+        <mat-datepicker #pickerFechaInicio></mat-datepicker>
+      </mat-form-field>
  
-</table > 
+        </form> 
 <br>
 
-  <button mat-stroked-button [mat-dialog-close]="" color="accent"><mat-icon>keyboard_backspace</mat-icon></button>
-  <button mat-stroked-button [mat-dialog-close]="data.animal" cdkFocusInitial color="primary"><mat-icon>meeting_room</mat-icon></button>
-  <button mat-stroked-button color="accent"><mat-icon>reply</mat-icon></button>
-  <button mat-stroked-button cdkFocusInitial color="primary"><mat-icon>done_outline</mat-icon></button>
+<button mat-button (click)="onNoClick()">No Thanks</button>
+<button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>

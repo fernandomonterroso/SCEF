@@ -10,16 +10,16 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {number: 1, description: 'Hydrogen'},
-  {number: 2, description: 'Helium'},
-  {number: 3, description: 'Lithium'},
-  {number: 4, description: 'Beryllium'},
-  {number: 5, description: 'Boron'},
-  {number: 6, description: 'Carbon'},
-  {number: 7, description: 'Nitrogen'},
-  {number: 8, description: 'Oxygen'},
-  {number: 9, description: 'Fluorine'},
-  {number: 10, description: 'Neon'},
+  {number: 1, description: 'Sin Acercamiento'},
+  {number: 2, description: 'Sin Acercamiento'},
+  {number: 3, description: 'Sin Acercamiento'},
+  {number: 4, description: 'Con Acercamiento'},
+  {number: 5, description: 'Sin Acercamiento'},
+  {number: 6, description: 'Sin Acercamiento'},
+  {number: 7, description: 'Con Acercamiento'},
+  {number: 8, description: 'Sin Acercamiento'},
+  {number: 9, description: 'Con Acercamiento'},
+  {number: 10, description: 'Con Acercamiento'},
 ];
 
 @Component({
@@ -40,6 +40,30 @@ export class AcercamientosComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(CrearAcercamiento, {
       width: '300px',      
+      data: {names: this.names, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  openDialogEditar(): void {
+    const dialogRef = this.dialog.open(ActualizarAcercamiento, {
+      width: '300px',      
+      data: {names: this.names, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  openDialogEliminar(): void {
+    const dialogRef = this.dialog.open(EliminarAcercamiento, {
+      width: '500px',      
       data: {names: this.names, animal: this.animal}
     });
 
@@ -112,6 +136,40 @@ export class CrearAcercamiento {
 
   constructor(
     public dialogRef: MatDialogRef<CrearAcercamiento>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'actualizar-acercamiento.component.html',
+  styleUrls: ['./acercamientos.component.css']
+})
+export class ActualizarAcercamiento {
+
+  constructor(
+    public dialogRef: MatDialogRef<ActualizarAcercamiento>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'eliminar-acercamiento.component.html',
+  styleUrls: ['./acercamientos.component.css']
+})
+export class EliminarAcercamiento {
+
+  constructor(
+    public dialogRef: MatDialogRef<EliminarAcercamiento>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {

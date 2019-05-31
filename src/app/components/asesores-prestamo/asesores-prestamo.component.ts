@@ -1,6 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
-import {MatTableDataSource} from '@angular/material';
+import {MatTableDataSource, MatPaginator} from '@angular/material';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 export interface PeriodicElement {
@@ -45,8 +45,34 @@ export class AsesoresPrestamoComponent implements OnInit {
     });
   }
 
+  openDialogEditar(): void {
+    const dialogRef = this.dialog.open(ActualizarAsesoresPrestamos, {
+      width: '300px',      
+      data: {names: this.names, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  openDialogEliminar(): void {
+    const dialogRef = this.dialog.open(EliminarAsesoresPrestamos, {
+      width: '300px',      
+      data: {names: this.names, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+  
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
   displayedColumns: string[] = ['select', 'number', 'description'];
@@ -96,6 +122,40 @@ export class CrearAsesoresPrestamos {
 
   constructor(
     public dialogRef: MatDialogRef<CrearAsesoresPrestamos>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'asesores-prestamo',
+  templateUrl: 'actualizar-asesores-prestamo.component.html',
+  styleUrls: ['./asesores-prestamo.component.css']
+})
+export class ActualizarAsesoresPrestamos {
+
+  constructor(
+    public dialogRef: MatDialogRef<ActualizarAsesoresPrestamos>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'asesores-prestamo',
+  templateUrl: 'eliminar-asesores-prestamo.component.html',
+  styleUrls: ['./asesores-prestamo.component.css']
+})
+export class EliminarAsesoresPrestamos {
+
+  constructor(
+    public dialogRef: MatDialogRef<EliminarAsesoresPrestamos>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {

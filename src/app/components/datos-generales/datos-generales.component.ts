@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatTableDataSource} from '@angular/material';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA,MatDatepickerModule} from '@angular/material';
 
 
 @Component({
@@ -16,8 +16,7 @@ export class DatosGeneralesComponet implements OnInit {
     constructor(public dialog: MatDialog) { }
     openDialog(): void {
       const dialogRef = this.dialog.open(DialogG, {
-        width: '60%',
-        height: '60%',      
+        width: '500px',      
         data: {names: this.names, animal: this.animal}
       });
   
@@ -29,8 +28,7 @@ export class DatosGeneralesComponet implements OnInit {
 
     openDialog2(): void {
       const dialogRef = this.dialog.open(DialogE, {
-        width: '60%',
-        height: '60%',      
+        width: '500px',      
         data: {names: this.names, animal: this.animal}
       });
   
@@ -42,8 +40,7 @@ export class DatosGeneralesComponet implements OnInit {
 
     openDialog3(): void {
       const dialogRef = this.dialog.open(DialogN, {
-        width: '60%',
-        height: '60%',      
+        width: '500px',      
         data: {names: this.names, animal: this.animal}
       });
   
@@ -55,8 +52,7 @@ export class DatosGeneralesComponet implements OnInit {
 
     openDialog4(): void {
       const dialogRef = this.dialog.open(DialogA, {
-        width: '60%',
-        height: '60%',      
+        width: '500px',      
         data: {names: this.names, animal: this.animal}
       });
   

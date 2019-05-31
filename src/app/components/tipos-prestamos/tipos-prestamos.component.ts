@@ -28,10 +28,26 @@ export class TiposPrestamosComponent implements OnInit {
   names: string;
 
   constructor(public dialog: MatDialog) { }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogTp, {
-      width: '60%',
-      height: '80%',      
+      width: '500px',      
+      data: {names: this.names, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  openDialogEliminar(): void {
+    const dialogRef = this.dialog.open(DialogEliminarTp, {
+      width: '500px',      
       data: {names: this.names, animal: this.animal}
     });
 
@@ -41,7 +57,6 @@ export class TiposPrestamosComponent implements OnInit {
     });
   }
   
-
   ngOnInit() {
   }
   displayedColumns: string[] = ['select', 'codigo', 'descripcion'];
@@ -87,6 +102,23 @@ export class DialogTp {
 
   constructor(
     public dialogRef: MatDialogRef<DialogTp>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'eliminar-prestamos.component.html',
+  styleUrls: ['./tipos-prestamos.component.css']
+})
+export class DialogEliminarTp {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogEliminarTp>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {
