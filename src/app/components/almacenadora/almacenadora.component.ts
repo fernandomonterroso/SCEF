@@ -15,12 +15,13 @@ export class AlmacenadoraComponent implements OnInit {
   public almacenadoras: Almacenadora[];
   public status: string;
   public numeroPagina: number = 0;
-  public numeroItems: number = 7;
+  public numeroItems: number = 10;
   public primeraPagina: boolean;
   public ultimaPagina: boolean;
   public cantidadActual: number;
   public almacenadoraModel: Almacenadora;
   public almacenadoraEditable: Almacenadora;
+  public almacenadoraSeleccionada: number[];
 
   public dataSource2;
 
@@ -65,39 +66,28 @@ export class AlmacenadoraComponent implements OnInit {
         this.almacenadoraEditable.descripcion = result.descripcion;
         console.log(result);
         console.table(this.almacenadoraEditable);
-        this._almacenadoraService.actualizarAlmacenadora(this.almacenadoraEditable).subscribe(
-          response => {
-            console.log(response);
-            this.listarAlmacenadorasParaTabla();
-            if (response.code == 0) {
-              this.status = 'ok';
-            } else {
-              alert(response.description);
-            }
-          }, error => {
-            let errorMessage = <any>error;
-            console.log(errorMessage);
-            if (errorMessage != null) {
-              alert(error.description);
-              this.status = 'error';
-            }
-          }
-        );
+        this.editar();
       }
     });
   }
 
-  // openDialogDelete(): void {
-  //   const dialogRef = this.dialog.open(DialogEliminarAlma, {
-  //     width: '500px',
-  //     data: {names: this.names, animal: this.animal}
-  //   });
+  openDialogDelete(): void {
+    const dialogRef = this.dialog.open(DialogEliminarAlma, {
+      width: '500px',
+      data: { codigo: this.almacenadoraEditable.codigo, descripcion: this.almacenadoraEditable.descripcion }
+    });
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
-  //     this.animal = result;
-  //   });
-  // }
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result != undefined) {
+        this.almacenadoraEditable.codigo = result.codigo;
+        this.almacenadoraEditable.descripcion = result.descripcion;
+        console.log(result);
+        console.table(this.almacenadoraEditable);
+        this.eliminar(this.almacenadoraSeleccionada[0]);
+      }
+    });
+  }
 
   ngOnInit() {
     this.listarAlmacenadorasParaTabla();
@@ -131,18 +121,15 @@ export class AlmacenadoraComponent implements OnInit {
   }
 
   setAlmacenadora(id) {
+    if(this.almacenadoraSeleccionada == undefined) return;
     this._almacenadoraService.listarAlmacenadora(id).subscribe(
       response => {
-        if (response.content) {
-          console.table(response)
-          console.table(response.content)
-          console.log(response)
-          this.listarAlmacenadorasParaTabla();
-          this.limpiarVariables();
+        if (response.code == 0) {
+          this.almacenadoraEditable = response;
+          console.log(this.almacenadoraEditable)
           this.status = 'ok';
         } else {
           this.status = 'error';
-          alert('error');
         }
       }, error => {
         let errorMessage = <any>error;
@@ -176,11 +163,52 @@ export class AlmacenadoraComponent implements OnInit {
   }
 
   editar() {
-    
+    this._almacenadoraService.actualizarAlmacenadora(this.almacenadoraEditable).subscribe(
+      response => {
+        console.log(response);
+        this.listarAlmacenadorasParaTabla();
+        if (response.code == 0) {
+          this.status = 'ok';
+        } else {
+          alert(response.description);
+        }
+      }, error => {
+        let errorMessage = <any>error;
+        console.log(errorMessage);
+        if (errorMessage != null) {
+          alert(error.description);
+          this.status = 'error';
+        }
+      }
+    );
   }
+
+  eliminar(id){
+    if(this.almacenadoraSeleccionada == undefined) return;
+    this._almacenadoraService.eliminarAlmacenadora(id).subscribe(
+      response => {
+        if (response.code == 0) {
+          this.almacenadoraEditable = response;
+          console.log(this.almacenadoraEditable)
+          this.listarAlmacenadorasParaTabla();
+          this.status = 'ok';
+        } else {
+          this.status = 'error';
+        }
+      }, error => {
+        let errorMessage = <any>error;
+        console.log(errorMessage);
+        if (errorMessage != null) {
+          this.status = 'error';
+        }
+      }
+    );
+  
+  }
+
   displayedColumns: string[] = ['select', 'codigo', 'descripcion'];
   dataSource = new MatTableDataSource<Almacenadora>(this.almacenadoras);
-  selection = new SelectionModel<Almacenadora>(true, []);
+  selection = new SelectionModel<Almacenadora>(false, []);
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
@@ -189,11 +217,20 @@ export class AlmacenadoraComponent implements OnInit {
     return numSelected === numRows;
   }
 
+  imprimir() {
+    this.almacenadoraSeleccionada = this.selection.selected.map(row => row.codigo);
+    console.log(this.almacenadoraSeleccionada[0]);
+    if (this.almacenadoraSeleccionada[0]) {
+      this.setAlmacenadora(this.almacenadoraSeleccionada[0]);
+    }
+    //    console.table(this.selection.selected)
+  }
+
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
     this.isAllSelected() ?
       this.selection.clear() :
-      this.dataSource.data.forEach(row => this.selection.select(row));
+      this.dataSource2.data.forEach(row => this.selection.select(row));
   }
 
   /** The label for the checkbox on the passed row */
